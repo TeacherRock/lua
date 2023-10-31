@@ -319,8 +319,8 @@ end
 function robot.PosError(Cmd, Record, type)
     local Error = 0.0 
     if type == "eff_end" then
-        Cmd_eff = robot.FK(Cmd.P[#Cmd.P])
-        Record_eff = robot.FK(Record.P[#Record.P])
+        Cmd_eff = robot.ForwardKinematics(Cmd.P[#Cmd.P])
+        Record_eff = robot.ForwardKinematics(Record.P[#Record.P])
         Error = math.sqrt((Cmd_eff[1][1] - Record_eff[1][1])^2 + (Cmd_eff[1][2] - Record_eff[1][2])^2 + (Cmd_eff[1][3] - Record_eff[1][3])^2)
     elseif type == "eff_all" then
         
